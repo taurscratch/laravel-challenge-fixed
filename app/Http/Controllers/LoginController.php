@@ -44,7 +44,8 @@ class LoginController extends Controller
                 'message' => 'Model not found.'
             ]);
         }
-    
+    //Initially, solution would be to remove hash check and replace it with string comparing but string comparing isn't an ideal validation method 
+    // so I just fix it in UserFactory so that one can properly validate with hash checking
         if (!Hash::check($request->password, $user->password)) {
             return response()->json([
                 'status'  => 404,
